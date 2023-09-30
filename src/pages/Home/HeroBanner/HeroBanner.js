@@ -13,9 +13,8 @@ const HeroBanner = () => {
         setQuery(e.target.value);
     };
 
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        if(query) {
+    const searchQueryHandler = (event) => {
+        if (event.key === "Enter" && query.length > 0) {
             navigate(`/search/${query}`);
         }
     };
@@ -34,10 +33,8 @@ const HeroBanner = () => {
                         Explore now.
                     </span>
                     <div className="searchInput">
-                        <form onSubmit={handleFormSubmit}>
-                            <input type="text" placeholder="Search for a movie or tv show...." value={query} onChange={handleChange} />
-                            <button>Search</button>
-                        </form>
+                        <input type="text" placeholder="Search for a movie or tv show...." value={query} onChange={handleChange} onKeyUp={searchQueryHandler} />
+                        <button>Search</button>
                     </div>
                 </div>
             </ContentWrapper>
