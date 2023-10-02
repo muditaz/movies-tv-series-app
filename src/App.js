@@ -1,4 +1,3 @@
-// import './App.css';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import SearchResult from './pages/SearchResult/SearchResult'

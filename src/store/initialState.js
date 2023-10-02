@@ -1,5 +1,9 @@
 const initialState = {
-    imagesInfoFromTmdbApi: null
+    imagesInfoFromTmdbApi: null,
+    genresInfo: null,
+    movieCategoriesOnHomePage: {
+        
+    }
 };
 
 export default initialState;

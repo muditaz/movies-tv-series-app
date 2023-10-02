@@ -12,4 +12,11 @@ Movies-TV-Series-App
 - Header component design.
 - Mobile designs for header component also taken care of.
 - Footer component design, mobile designs also covered.
-hero banner api call, tmdb api failure page, clicking on search button should also submit, index.scss, mixins.scss
+- Switch tabs component design.
+- Carousel component design.
+- Shimmer UI functionality.
+- Generic component for different media-type categories on home page, following config driven UI approach for that.
+- day/week trending movies, popular and top_rated movies/tv functionality
+- Hero banner background image is randomly choosen on mounting.
+- API calls optimized by using memoization technique, i.e. only calls are made when required.
+tmdb api failure page, clicking on search button should also submit, index.scss, decision on Lazy Images

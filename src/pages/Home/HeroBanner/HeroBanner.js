@@ -3,11 +3,19 @@ import './style.scss';
 import { useNavigate } from 'react-router-dom';
 import Img from '../../../components/LazyLoadImage/Img';
 import ContentWrapper from '../../../components/ContentWrapper/ContentWrapper'
+import { useSelector } from 'react-redux';
+import { movieCategoriesOnHomePage } from '../../../constants/constants';
 
 const HeroBanner = () => {
     const navigate = useNavigate();
     const [query, setQuery] = useState("");
-    const bg = "https://image.tmdb.org/t/p/original/iiXliCeykkzmJ0Eg9RYJ7F2CWSz.jpg";
+    const imagesInfoFromTmdbApi = useSelector((state) => {return(state.imagesInfoFromTmdbApi)});
+    const movieCategoryOnHomePage = useSelector((state) => {
+        if(state.movieCategoriesOnHomePage[movieCategoriesOnHomePage[0]]) {
+            return(state.movieCategoriesOnHomePage[movieCategoriesOnHomePage[0]][Object.keys(state.movieCategoriesOnHomePage[movieCategoriesOnHomePage[0]])[0]]);
+        }
+    });
+    const bg = imagesInfoFromTmdbApi.secure_base_url + 'original' + (movieCategoryOnHomePage && movieCategoryOnHomePage.results[Math.floor(Math.random() * 10)].backdrop_path);
 
     const handleChange = (e) => {
         setQuery(e.target.value);
@@ -21,9 +29,9 @@ const HeroBanner = () => {
 
     return(
         <div className='heroBanner'>
-            <div className='backdrop-img'>
+            {movieCategoryOnHomePage && <div className='backdrop-img'>
                 <Img src={bg} />
-            </div>
+            </div>}
             <div className='opacity-layer'></div>
             <ContentWrapper>
             <div className="heroBannerContent">

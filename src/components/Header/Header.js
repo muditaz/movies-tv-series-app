@@ -8,6 +8,7 @@ import "./style.scss";
 
 import ContentWrapper from "../ContentWrapper/ContentWrapper";
 import logo from "../../assets/filmish-logo.png";
+import { optionsForTabsOnHomePage } from "../../constants/constants";
 
 const Header = () => {
     const [show, setShow] = useState("top");
@@ -62,14 +63,16 @@ const Header = () => {
         setShowSearch(false);
     };
 
-    const navigationHandler = (type) => {
-        if (type === "movie") {
-            navigate("/explore/movie");
-        } else {
-            navigate("/explore/tv");
-        }
+    const navigationHandler = (endpoint) => {
+        navigate(`/explore/${endpoint}`)
         setMobileMenu(false);
     };
+
+    const menuItems = [];
+    for(let i = 0; i < optionsForTabsOnHomePage.movieTv.length; i++) {
+        menuItems.push(<li className="menuItem" onClick={() => navigationHandler(optionsForTabsOnHomePage.movieTv[i].value)}>{optionsForTabsOnHomePage.movieTv[i].label}</li>);
+    }
+    menuItems.push(<li className="menuItem"><HiOutlineSearch onClick={openSearch} /></li>)
 
     return (
         <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
@@ -78,9 +81,7 @@ const Header = () => {
                     <img src={logo} alt="logo" />
                 </div>
                 <ul className="menuItems">
-                    <li className="menuItem" onClick={() => navigationHandler("movie")}>Movies</li>
-                    <li className="menuItem" onClick={() => navigationHandler("tv")}>TV Shows</li>
-                    <li className="menuItem"><HiOutlineSearch onClick={openSearch} /></li>
+                    {menuItems}
                 </ul>
                 <div className="mobileMenuItems">
                     <HiOutlineSearch onClick={openSearch} />
