@@ -44,7 +44,7 @@ const VideosSection = () => {
     useEffect(() => {
         if(!videos)
         getVideo();
-    }, []);
+    }, [id]);
 
     return (
         <div className="videosSection">

@@ -51,7 +51,7 @@ const DetailsBanner = () => {
     useEffect(() => {
         if(!info)
         getData();
-    }, []);
+    }, [id]);
 
     return (
         <div className="detailsBanner">
@@ -74,10 +74,10 @@ const DetailsBanner = () => {
                                     <Genres data={_genres} />
                                     <div className="row">
                                        <CircleRating rating={info.vote_average.toFixed(1)} />
-                                       <div className="playbtn" onClick={() => {setShow(true);setVideoId(video.key);}}>
+                                       {video && <div className="playbtn" onClick={() => {setShow(true);setVideoId(video?.key);}}>
                                             <PlayIcon />
                                             <span className="text">Watch Trailer</span>
-                                       </div>
+                                       </div>}
                                     </div>
                                     <div className="overview">
                                         <div className="heading">

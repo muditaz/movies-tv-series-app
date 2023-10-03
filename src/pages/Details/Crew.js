@@ -24,7 +24,7 @@ const Crew = ({ mediaType, id }) => {
     useEffect(() => {
         if(!crew)
         getData();
-    }, []);
+    }, [id]);
 
     if(!crew)
     return(null);

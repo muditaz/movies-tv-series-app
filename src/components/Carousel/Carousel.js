@@ -14,7 +14,7 @@ import CircleRating from  '../CircleRating/CircleRating';
 import "./style.scss";
 import Genres from "../Genres/Genres";
 
-const Carousel = ({ data, endpoint }) => {
+const Carousel = ({ data, endpoint, title }) => {
     const carouselContainer = useRef();
     const imagesInfoFromTmdbApi = useSelector((state) => state.imagesInfoFromTmdbApi);
     const navigate = useNavigate();
@@ -48,6 +48,7 @@ const Carousel = ({ data, endpoint }) => {
     return (
         <div className="carousel">
             <ContentWrapper>
+                {title && <div className="carouselTitle">{title}</div>}
                 <BsFillArrowLeftCircleFill
                     className="carouselLeftNav arrow"
                     onClick={() => navigation("left")}

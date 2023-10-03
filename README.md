@@ -25,4 +25,7 @@ Movies-TV-Series-App
 - Avoiding unnecessary API calls and placing API calls in right places to make sure loading is not slow.
 - Cast component in details page completed.
 - VideosSection component in details page completed.
-tmdb api failure page, clicking on search button should also submit, index.scss, decision on Lazy Images, change Logo, Refactoring 
+- Refactored code.
+- Similar component completed in details page.
+- Recommended component completed in details page.
+tmdb api failure page, clicking on search button should also submit, index.scss, decision on Lazy Images, change Logo, color of carousel arrows 
