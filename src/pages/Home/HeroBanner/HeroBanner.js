@@ -11,8 +11,9 @@ const HeroBanner = () => {
     const [query, setQuery] = useState("");
     const imagesInfoFromTmdbApi = useSelector((state) => {return(state.imagesInfoFromTmdbApi)});
     const movieCategoryOnHomePage = useSelector((state) => {
-        if(state.movieCategoriesOnHomePage[movieCategoriesOnHomePage[0]]) {
-            return(state.movieCategoriesOnHomePage[movieCategoriesOnHomePage[0]][Object.keys(state.movieCategoriesOnHomePage[movieCategoriesOnHomePage[0]])[0]]);
+        const obj = state.movieCategoriesOnHomePage[movieCategoriesOnHomePage[0]]; 
+        if(obj) {
+            return(obj[Object.keys(obj)[0]]);
         }
     });
     const bg = imagesInfoFromTmdbApi.secure_base_url + 'original' + (movieCategoryOnHomePage && movieCategoryOnHomePage.results[Math.floor(Math.random() * 10)].backdrop_path);

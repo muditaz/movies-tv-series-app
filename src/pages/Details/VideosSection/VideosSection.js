@@ -16,7 +16,10 @@ const VideosSection = () => {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const [videoId, setVideoId] = useState(null);
-    const videos = useSelector((state) => {return(state.moviesTvShowsInfo[mediaType] && state.moviesTvShowsInfo[mediaType][id] && state.moviesTvShowsInfo[mediaType][id].videos)});
+    const videos = useSelector((state) => {
+        const obj = state.moviesTvShowsInfo[mediaType];
+        return(obj && obj[id] && obj[id].videos)
+    });
 
     const loadingSkeleton = () => {
         return (
@@ -31,7 +34,7 @@ const VideosSection = () => {
     const getVideo = async () => {
         try {
             const data = await apiCall(`/${mediaType}/${id}/videos`);
-            dispatch({ type: 'setVideos', payload: {mediaType, id, videos: data?.results} });
+            dispatch({ type: 'setDetails', payload: {mediaType, id, value: data?.results, key: 'videos'} });
         } catch(err) {
             navigate('/tmdb-api-failure');
         }

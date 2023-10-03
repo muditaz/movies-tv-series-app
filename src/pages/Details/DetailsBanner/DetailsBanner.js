@@ -21,9 +21,13 @@ const DetailsBanner = () => {
     const [show, setShow] = useState(false);
     const [videoId, setVideoId] = useState(null);
     const info = useSelector((state) => {
-        return(state.moviesTvShowsInfo[mediaType] && state.moviesTvShowsInfo[mediaType][id] && state.moviesTvShowsInfo[mediaType][id].info);
+        const obj = state.moviesTvShowsInfo[mediaType];
+        return(obj && obj[id] && obj[id].info);
     });
-    const videos = useSelector((state) => {return(state.moviesTvShowsInfo[mediaType] && state.moviesTvShowsInfo[mediaType][id] && state.moviesTvShowsInfo[mediaType][id].videos)}); 
+    const videos = useSelector((state) => {
+        const obj = state.moviesTvShowsInfo[mediaType];
+        return(obj && obj[id] && obj[id].videos)
+    }); 
     const video = videos && videos[0];
     const imagesInfoFromTmdbApi = useSelector((state) => {return(state.imagesInfoFromTmdbApi)});
     const _genres = info?.genres?.map((g) => g.id);
@@ -38,7 +42,7 @@ const DetailsBanner = () => {
     const getData = async () => {
         try {
             const data = await apiCall(`/${mediaType}/${id}}`);
-            dispatch({ type: 'setParticularMovie/TvInfo', payload: { mediaType, id, info: data } });    
+            dispatch({ type: 'setDetails', payload: { mediaType, id, key: 'info', value: data } });    
         } catch(err) {
             navigate('/tmdb-api-failure');
         }
@@ -70,10 +74,7 @@ const DetailsBanner = () => {
                                     <Genres data={_genres} />
                                     <div className="row">
                                        <CircleRating rating={info.vote_average.toFixed(1)} />
-                                       <div className="playbtn" onClick={() => {
-                                                    setShow(true);
-                                                    setVideoId(video.key);
-                                                }}>
+                                       <div className="playbtn" onClick={() => {setShow(true);setVideoId(video.key);}}>
                                             <PlayIcon />
                                             <span className="text">Watch Trailer</span>
                                        </div>

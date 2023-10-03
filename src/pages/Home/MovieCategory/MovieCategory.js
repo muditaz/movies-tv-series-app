@@ -12,7 +12,8 @@ const MovieCategory = ({movieCategory, defaultEndpoint}) => {
     const [endpoint, setEndpoint] = useState(defaultEndpoint);
     const { tabOptions, title, url } = getInfoOfMovieCategoryOnHomePage(movieCategory, endpoint);
     const movieCategoryData = useSelector((state) => {
-        return(state.movieCategoriesOnHomePage[movieCategory] && state.movieCategoriesOnHomePage[movieCategory][endpoint]);    
+        const obj = state.movieCategoriesOnHomePage[movieCategory];
+        return(obj && obj[endpoint]);    
     });
 
     const getMovieCategoryData = async () => {

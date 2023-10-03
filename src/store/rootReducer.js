@@ -13,29 +13,12 @@ const rootReducer = (state = initialState, action) => {
                 if(draft.movieCategoriesOnHomePage[movieCategory]) {
                     draft.movieCategoriesOnHomePage[movieCategory][endpoint] = movieCategoryResult;
                 } else {
-                    const objToAssign = {};
-                    objToAssign[endpoint] = movieCategoryResult;
-                    draft.movieCategoriesOnHomePage[movieCategory] = objToAssign;
+                    draft.movieCategoriesOnHomePage[movieCategory] = {[endpoint]: movieCategoryResult};
                 }
                 break;
             }
             case 'setGenresInfo': {
                 draft.genresInfo = action.payload;
-                break;
-            }
-            case 'setParticularMovie/TvInfo': {
-                const {mediaType, id, info} = action.payload;
-                if(draft.moviesTvShowsInfo[mediaType]) {
-                    if(draft.moviesTvShowsInfo[mediaType][id]) {
-                        draft.moviesTvShowsInfo[mediaType][id].info = info;
-                    } else {
-                        draft.moviesTvShowsInfo[mediaType][id] = { info };
-                    }
-                } else {
-                    const objToAssign = {};
-                    objToAssign[id] = { info };
-                    draft.moviesTvShowsInfo[mediaType] = objToAssign;
-                }
                 break;
             }
             case 'setCastAndCrew': {
@@ -44,18 +27,16 @@ const rootReducer = (state = initialState, action) => {
                 draft.moviesTvShowsInfo[mediaType][id].crew = data.crew;
                 break;
             }
-            case 'setVideos': {
-                const {mediaType, id, videos} = action.payload;
+            case 'setDetails': {
+                const { mediaType, id, key, value } = action.payload;
                 if(draft.moviesTvShowsInfo[mediaType]) {
                     if(draft.moviesTvShowsInfo[mediaType][id]) {
-                        draft.moviesTvShowsInfo[mediaType][id].videos = videos;
+                        draft.moviesTvShowsInfo[mediaType][id][key] = value;
                     } else {
-                        draft.moviesTvShowsInfo[mediaType][id] = { videos };
+                        draft.moviesTvShowsInfo[mediaType][id] = {[key]: value};
                     }
                 } else {
-                    const objToAssign = {};
-                    objToAssign[id] = { videos };
-                    draft.moviesTvShowsInfo[mediaType] = objToAssign;
+                    draft.moviesTvShowsInfo[mediaType] = {[id]: {[key]: value}};
                 }
                 break;
             }

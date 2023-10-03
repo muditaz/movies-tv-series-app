@@ -9,7 +9,10 @@ import { useParams } from "react-router-dom";
 const Cast = () => {
     const { mediaType, id } = useParams();
     const imagesInfoFromTmdbApi = useSelector((state) => {return(state.imagesInfoFromTmdbApi)});
-    const cast = useSelector((state) => {return(state.moviesTvShowsInfo[mediaType] && state.moviesTvShowsInfo[mediaType][id] && state.moviesTvShowsInfo[mediaType][id].cast)});
+    const cast = useSelector((state) => {
+        const obj = state.moviesTvShowsInfo[mediaType]; 
+        return(obj && obj[id] && obj[id].cast);
+    });
 
     const skeleton = () => {
         return (
@@ -20,6 +23,7 @@ const Cast = () => {
             </div>
         );
     };
+    
     return (
         <div className="castSection">
             <ContentWrapper>
