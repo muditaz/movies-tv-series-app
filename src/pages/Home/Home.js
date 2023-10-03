@@ -5,21 +5,28 @@ import MovieCategory from './MovieCategory/MovieCategory';
 import { useEffect } from 'react';
 import { apiCall, getInfoOfMovieCategoryOnHomePage } from '../../utils/utils';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const genresInfo = useSelector((state) => {return(state.genresInfo)});
 
     const getGenresInfo = async () => {
-        const obj = {};
-        for(let i = 0; i < optionsForTabsOnHomePage.movieTv.length; i++) {
-            const { genres } = await apiCall(`/genre/${optionsForTabsOnHomePage.movieTv[0].value}/list`);
-            genres.map((item) => (obj[item.id] = item));
+        try {
+            const obj = {};
+            for(let i = 0; i < optionsForTabsOnHomePage.movieTv.length; i++) {
+                const { genres } = await apiCall(`/genre/${optionsForTabsOnHomePage.movieTv[0].value}/list`);
+                genres.map((item) => (obj[item.id] = item));
+            }
+            dispatch({ type: 'setGenresInfo', payload: obj });
+        } catch(err) {
+            navigate('/tmdb-api-failure');
         }
-        dispatch({ type: 'setGenresInfo', payload: obj });
     };
 
     useEffect(() => {
+        if(!genresInfo)
         getGenresInfo();
     }, []);
 

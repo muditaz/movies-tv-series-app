@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { apiCall } from './utils/utils';
+import Details from './pages/Details/Details';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/:mediaType/:id' element={<Details />} />
         <Route path='/search/:query' element={<SearchResult />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>

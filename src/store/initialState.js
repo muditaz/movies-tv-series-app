@@ -3,6 +3,15 @@ const initialState = {
     genresInfo: null,
     movieCategoriesOnHomePage: {
         
+    },    
+    moviesTvShowsInfo: {
+        // movie: {
+        //     id: {
+        //         info: [],
+        //         videos: []
+        //     }
+        // },
+        // tv: {}
     }
 };
 

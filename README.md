@@ -19,4 +19,8 @@ Movies-TV-Series-App
 - day/week trending movies, popular and top_rated movies/tv functionality
 - Hero banner background image is randomly choosen on mounting.
 - API calls optimized by using memoization technique, i.e. only calls are made when required.
-tmdb api failure page, clicking on search button should also submit, index.scss, decision on Lazy Images
+- Details banner component design.
+- Getting cast and crew details from API.
+- Trailer functionality on details banner component.
+- Avoiding unnecessary API calls and placing API calls in right places to make sure loading is not slow.
+tmdb api failure page, clicking on search button should also submit, index.scss, decision on Lazy Images, change Logo
