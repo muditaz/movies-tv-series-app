@@ -44,6 +44,21 @@ const rootReducer = (state = initialState, action) => {
                 draft.moviesTvShowsInfo[mediaType][id].crew = data.crew;
                 break;
             }
+            case 'setVideos': {
+                const {mediaType, id, videos} = action.payload;
+                if(draft.moviesTvShowsInfo[mediaType]) {
+                    if(draft.moviesTvShowsInfo[mediaType][id]) {
+                        draft.moviesTvShowsInfo[mediaType][id].videos = videos;
+                    } else {
+                        draft.moviesTvShowsInfo[mediaType][id] = { videos };
+                    }
+                } else {
+                    const objToAssign = {};
+                    objToAssign[id] = { videos };
+                    draft.moviesTvShowsInfo[mediaType] = objToAssign;
+                }
+                break;
+            }
             default:
                 break;
         }

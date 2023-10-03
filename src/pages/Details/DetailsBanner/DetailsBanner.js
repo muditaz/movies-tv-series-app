@@ -14,7 +14,7 @@ import { apiCall } from '../../../utils/utils';
 import Crew from "../Crew";
 import VideoPopup from "../../../components/VideoPopup/VideoPopup";
 
-const DetailsBanner = ({video}) => {
+const DetailsBanner = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { mediaType, id } = useParams();
@@ -23,6 +23,8 @@ const DetailsBanner = ({video}) => {
     const info = useSelector((state) => {
         return(state.moviesTvShowsInfo[mediaType] && state.moviesTvShowsInfo[mediaType][id] && state.moviesTvShowsInfo[mediaType][id].info);
     });
+    const videos = useSelector((state) => {return(state.moviesTvShowsInfo[mediaType] && state.moviesTvShowsInfo[mediaType][id] && state.moviesTvShowsInfo[mediaType][id].videos)}); 
+    const video = videos && videos[0];
     const imagesInfoFromTmdbApi = useSelector((state) => {return(state.imagesInfoFromTmdbApi)});
     const _genres = info?.genres?.map((g) => g.id);
     const poster_path = imagesInfoFromTmdbApi.secure_base_url + 'original' + info?.poster_path;

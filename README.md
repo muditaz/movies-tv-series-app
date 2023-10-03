@@ -23,4 +23,6 @@ Movies-TV-Series-App
 - Getting cast and crew details from API.
 - Trailer functionality on details banner component.
 - Avoiding unnecessary API calls and placing API calls in right places to make sure loading is not slow.
-tmdb api failure page, clicking on search button should also submit, index.scss, decision on Lazy Images, change Logo
+- Cast component in details page completed.
+- VideosSection component in details page completed.
+tmdb api failure page, clicking on search button should also submit, index.scss, decision on Lazy Images, change Logo, Refactoring 
