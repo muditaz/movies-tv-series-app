@@ -49,7 +49,7 @@ const VideosSection = () => {
     return (
         <div className="videosSection">
             <ContentWrapper>
-                <div className="sectionHeading">Official Videos</div>
+                {!(videos && videos.length === 0) && <div className="sectionHeading">Official Videos</div>}
                 {videos ? (
                     <div className="videos">
                         {videos?.map((video) => {
