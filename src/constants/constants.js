@@ -22,3 +22,5 @@ export const optionsForTabsOnHomePage = {
 };
 
 export const movieCategoriesOnHomePage = ['trending', 'popular', 'top_rated'];
+
+export const cachingLimit = 5;

@@ -28,4 +28,6 @@ Movies-TV-Series-App
 - Refactored code.
 - Similar component completed in details page.
 - Recommended component completed in details page.
+- Negative scenarios covered properly
+- Set caching limit up to 5 for movies as well as tv shows, thus striking a balance between optimizing API calls as well as storage in redux.
 tmdb api failure page, clicking on search button should also submit, index.scss, decision on Lazy Images, change Logo, color of carousel arrows 

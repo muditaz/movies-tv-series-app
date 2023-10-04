@@ -1,3 +1,4 @@
+import { cachingLimit } from "../constants/constants";
 import initialState from "./initialState";
 import { produce } from "immer";
 
@@ -34,9 +35,15 @@ const rootReducer = (state = initialState, action) => {
                         draft.moviesTvShowsInfo[mediaType][id][key] = value;
                     } else {
                         draft.moviesTvShowsInfo[mediaType][id] = {[key]: value};
+                        const detailsCache = draft[`detailsCache${mediaType}`]; 
+                        detailsCache.push(id);
+                        if(detailsCache.length > cachingLimit) {
+                            delete draft.moviesTvShowsInfo[mediaType][detailsCache.shift()];
+                        }
                     }
                 } else {
                     draft.moviesTvShowsInfo[mediaType] = {[id]: {[key]: value}};
+                    draft[`detailsCache${mediaType}`] = [id];
                 }
                 break;
             }
