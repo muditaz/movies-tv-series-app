@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
 import Img from '../../../components/LazyLoadImage/Img';
@@ -9,6 +9,7 @@ import { movieCategoriesOnHomePage } from '../../../constants/constants';
 const HeroBanner = () => {
     const navigate = useNavigate();
     const [query, setQuery] = useState("");
+    const [bg, setBg] = useState('');
     const imagesInfoFromTmdbApi = useSelector((state) => {return(state.imagesInfoFromTmdbApi)});
     const movieCategoryOnHomePage = useSelector((state) => {
         const obj = state.movieCategoriesOnHomePage[movieCategoriesOnHomePage[0]]; 
@@ -16,7 +17,14 @@ const HeroBanner = () => {
             return(obj[Object.keys(obj)[0]]);
         }
     });
-    const bg = imagesInfoFromTmdbApi.secure_base_url + 'original' + (movieCategoryOnHomePage && movieCategoryOnHomePage.results[Math.floor(Math.random() * 10)].backdrop_path);
+
+    useEffect(() => {
+        if(movieCategoryOnHomePage) {
+            const bg = imagesInfoFromTmdbApi.secure_base_url + 'original' + (movieCategoryOnHomePage.results[Math.floor(Math.random() * 10)].backdrop_path);
+            setBg(bg);
+        }
+    }, [movieCategoryOnHomePage]);
+
 
     const handleChange = (e) => {
         setQuery(e.target.value);
@@ -30,7 +38,7 @@ const HeroBanner = () => {
 
     return(
         <div className='heroBanner'>
-            {movieCategoryOnHomePage && <div className='backdrop-img'>
+            {bg && <div className='backdrop-img'>
                 <Img src={bg} />
             </div>}
             <div className='opacity-layer'></div>
