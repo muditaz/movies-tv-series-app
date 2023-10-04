@@ -16,7 +16,7 @@ const Home = () => {
         try {
             const obj = {};
             for(let i = 0; i < optionsForTabsOnHomePage.movieTv.length; i++) {
-                const { genres } = await apiCall(`/genre/${optionsForTabsOnHomePage.movieTv[0].value}/list`);
+                const { genres } = await apiCall(`/genre/${optionsForTabsOnHomePage.movieTv[i].value}/list`);
                 genres.map((item) => (obj[item.id] = item));
             }
             dispatch({ type: 'setGenresInfo', payload: obj });

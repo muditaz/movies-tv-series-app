@@ -33,4 +33,5 @@ Movies-TV-Series-App
 - SearchResult component design.
 - Implemented infinite scrolling for search result component.
 - Edge cases also covered with respect to search result component.
-tmdb api failure page, clicking on search button should also submit, index.scss, decision on Lazy Images, change Logo, color of carousel arrows 
+- Bug fix of Genres.
+tmdb api failure page, clicking on search button should also submit, index.scss, decision on Lazy Images, change Logo, color of carousel arrows, page not found

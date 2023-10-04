@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { apiCall } from './utils/utils';
 import Details from './pages/Details/Details';
+import Explore from './pages/Explore/Explore';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/:mediaType/:id' element={<Details />} />
         <Route path='/search/:query' element={<SearchResult />} />
+        <Route path='/explore/:mediaType' element={<Explore />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
       <Footer />
