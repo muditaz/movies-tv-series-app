@@ -24,3 +24,10 @@ export const optionsForTabsOnHomePage = {
 export const movieCategoriesOnHomePage = ['trending', 'popular', 'top_rated'];
 
 export const cachingLimit = 5;
+
+export const sortbyData = [
+    { value: "popularity.desc", label: "Most Popular" },
+    { value: "vote_average.desc", label: "Top Rated" },
+    { value: "primary_release_date.desc", label: "Recent Releases" },
+    { value: "original_title.asc", label: "Title (A-Z)" },
+];

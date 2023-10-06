@@ -15,11 +15,13 @@ const Home = () => {
     const getGenresInfo = async () => {
         try {
             const obj = {};
+            const arr = [];
             for(let i = 0; i < optionsForTabsOnHomePage.movieTv.length; i++) {
                 const { genres } = await apiCall(`/genre/${optionsForTabsOnHomePage.movieTv[i].value}/list`);
+                arr.push(genres);
                 genres.map((item) => (obj[item.id] = item));
             }
-            dispatch({ type: 'setGenresInfo', payload: obj });
+            dispatch({ type: 'setGenresInfo', payload: { obj, arr } });
         } catch(err) {
             navigate('/tmdb-api-failure');
         }

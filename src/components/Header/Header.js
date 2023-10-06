@@ -9,8 +9,10 @@ import "./style.scss";
 import ContentWrapper from "../ContentWrapper/ContentWrapper";
 import logo from "../../assets/filmish-logo.png";
 import { optionsForTabsOnHomePage } from "../../constants/constants";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
+    const dispatch = useDispatch();
     const [show, setShow] = useState("top");
     const [lastScrollY, setLastScrollY] = useState(0);
     const [mobileMenu, setMobileMenu] = useState(false);
@@ -70,7 +72,10 @@ const Header = () => {
 
     const menuItems = [];
     for(let i = 0; i < optionsForTabsOnHomePage.movieTv.length; i++) {
-        menuItems.push(<li className="menuItem" onClick={() => navigationHandler(optionsForTabsOnHomePage.movieTv[i].value)}>{optionsForTabsOnHomePage.movieTv[i].label}</li>);
+        menuItems.push(<li className="menuItem" onClick={() => {
+            navigationHandler(optionsForTabsOnHomePage.movieTv[i].value);
+            dispatch({type: 'resetFieldsInExplore'});
+        }}>{optionsForTabsOnHomePage.movieTv[i].label}</li>);
     }
     menuItems.push(<li className="menuItem"><HiOutlineSearch onClick={openSearch} /></li>)
 

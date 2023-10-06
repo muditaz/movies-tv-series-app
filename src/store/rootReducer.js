@@ -1,4 +1,4 @@
-import { cachingLimit } from "../constants/constants";
+import { cachingLimit, optionsForTabsOnHomePage } from "../constants/constants";
 import initialState from "./initialState";
 import { produce } from "immer";
 
@@ -19,7 +19,11 @@ const rootReducer = (state = initialState, action) => {
                 break;
             }
             case 'setGenresInfo': {
-                draft.genresInfo = action.payload;
+                draft.genresInfo = action.payload.obj;
+                const { arr } = action.payload;
+                for(let i = 0; i < optionsForTabsOnHomePage.movieTv.length; i++) {
+                    draft[`${optionsForTabsOnHomePage.movieTv[i].value}GenresInfo`] = arr[i];
+                }
                 break;
             }
             case 'setCastAndCrew': {
@@ -45,6 +49,15 @@ const rootReducer = (state = initialState, action) => {
                     draft.moviesTvShowsInfo[mediaType] = {[id]: {[key]: value}};
                     draft[`detailsCache${mediaType}`] = [id];
                 }
+                break;
+            }
+            case 'setFieldsInExplore': {
+                draft[`${action.payload.key}Selected`] = action.payload.value; 
+                break;
+            }
+            case 'resetFieldsInExplore': {
+                draft.genresSelected = [];
+                draft.sortbySelected = null;
                 break;
             }
             default:

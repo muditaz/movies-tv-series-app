@@ -12,7 +12,9 @@ const initialState = {
         //     }
         // },
         // tv: {}
-    }
+    },
+    genresSelected: [],
+    sortbySelected: null
 };
 
 export default initialState;

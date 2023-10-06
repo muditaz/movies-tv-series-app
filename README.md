@@ -34,4 +34,6 @@ Movies-TV-Series-App
 - Implemented infinite scrolling for search result component.
 - Edge cases also covered with respect to search result component.
 - Bug fix of Genres.
-tmdb api failure page, clicking on search button should also submit, index.scss, decision on Lazy Images, change Logo, color of carousel arrows, page not found
+- Explore page completed with infinite scrolling functionality.
+- Sorting and genres filter functionality completed.
+tmdb api failure page, clicking on search button should also submit, decision on Lazy Images, change Logo, color of carousel arrows, page not found, Genres Dropdown improve.
