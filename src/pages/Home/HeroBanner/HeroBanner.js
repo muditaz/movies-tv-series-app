@@ -36,6 +36,12 @@ const HeroBanner = () => {
         }
     };
 
+    const handleClick = (event) => {
+        if(query.length > 0) {
+            navigate(`/search/${query}`);
+        }
+    };
+
     return(
         <div className='heroBanner'>
             {bg && <div className='backdrop-img'>
@@ -51,7 +57,7 @@ const HeroBanner = () => {
                     </span>
                     <div className="searchInput">
                         <input type="text" placeholder="Search for a movie or tv show...." value={query} onChange={handleChange} onKeyUp={searchQueryHandler} />
-                        <button>Search</button>
+                        <button onClick={handleClick}>Search</button>
                     </div>
                 </div>
             </ContentWrapper>

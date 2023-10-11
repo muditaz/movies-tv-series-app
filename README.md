@@ -36,4 +36,4 @@ Movies-TV-Series-App
 - Bug fix of Genres.
 - Explore page completed with infinite scrolling functionality.
 - Sorting and genres filter functionality completed.
-tmdb api failure page, clicking on search button should also submit, decision on Lazy Images, change Logo, color of carousel arrows, page not found, Genres Dropdown improve.
+- TMDB API failure page added.

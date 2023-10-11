@@ -76,7 +76,7 @@ const SearchResult = () => {
                         </div>
                     </>
                 ) : (
-                    <span className="resultNotFound">Sorry, Results Not Found!!</span>
+                    <span className="resultNotFound" style={{color: '#ffffff'}}>Sorry, Results Not Found for '{query}' !</span>
                 )}
             </ContentWrapper> : <Spinner initial={true}/>}
         </div>

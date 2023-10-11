@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { apiCall } from './utils/utils';
 import Details from './pages/Details/Details';
 import Explore from './pages/Explore/Explore';
+import TMDBAPIFailure from './pages/TMDBAPIFailure';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function App() {
         <Route path='/:mediaType/:id' element={<Details />} />
         <Route path='/search/:query' element={<SearchResult />} />
         <Route path='/explore/:mediaType' element={<Explore />} />
+        <Route path='/tmdp-api-failure' element={<TMDBAPIFailure />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
       <Footer />
